@@ -33,7 +33,7 @@ namespace EventWay.Infrastructure.MsSql
             {
                 conn.Open();
 
-                const string sql = "SELECT ProjectionId, EventOffset FROM ProjectionMetadata WHERE ProjectionId=@projectionId";
+                const string sql = "SELECT ProjectionId, EventOffset, ProjectionType FROM ProjectionMetadata WHERE ProjectionId=@projectionId";
                 var projection = conn.QuerySingle<ProjectionMetadata>(sql, new { projectionId }, commandTimeout: CommandTimeout);
 
                 return projection;
